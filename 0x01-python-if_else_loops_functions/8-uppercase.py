@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 def uppercase(str):
-    for i in range(97, 124):
-        newList = []
-        newList.append(i)
-    print(newList)
-uppercase('s')
+    stri = str
+    for i in stri:
+        vi = ord(i)
+        if vi >= 97 and vi <= 122:
+            vi = vi - 32
+        print("{}".format(chr(vi)), end="")
+    print("\n")
