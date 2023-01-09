@@ -3,9 +3,10 @@ add_tuple = __import__('7-add_tuple').add_tuple
 
 tuple_a = (1, 89)
 tuple_b = (88, 11)
-tuple_c = (10, 20, 30, 40)
+tuple_c = ()
 new_tuple = add_tuple(tuple_a, tuple_b)
 print(new_tuple)
 print(add_tuple(tuple_a, tuple_c))
 print(add_tuple(tuple_a, (1, )))
 print(add_tuple(tuple_a, ()))
+print(add_tuple(tuple_c, tuple_c))
