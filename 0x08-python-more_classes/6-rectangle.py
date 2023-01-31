@@ -8,10 +8,16 @@
 class Rectangle():
     """rectangle class"""
 
+    # A class variable, counting the number of rectangles
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
-        """Initialize class."""
+        """Initialize class"""
         self.width = width
         self.height = height
+
+        # adds to number of instances of the rectangle
+        Rectangle.number_of_instances += 1
 
     def area(self):
         """Return Rectangle area"""
@@ -64,8 +70,14 @@ class Rectangle():
         return(str1[:-1])
 
     def __repr__(self):
-        """string evaluation of rectangle"""
+        """Get string evaluation of the rectangle"""
         if self.__height == 0 or self.__height == 0:
             return("")
         else:
             return("Rectangle({:d}, {:d})".format(self.__width, self.__height))
+
+    def __del__(self):
+        """Prints when the instance is deleted"""
+# decreases to its number of instances when the object is deleted
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")

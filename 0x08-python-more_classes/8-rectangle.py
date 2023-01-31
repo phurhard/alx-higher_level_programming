@@ -6,12 +6,19 @@
 
 
 class Rectangle():
-    """rectangle class"""
+    """A rectangle class"""
+
+    # class variable, count the number of rectangles
+    number_of_instances = 0
+    print_symbol = "#"
 
     def __init__(self, width=0, height=0):
-        """Initialize class."""
+        """Initialize class"""
         self.width = width
         self.height = height
+
+        # when a rectangle is instantiated, this increases the instances count
+        Rectangle.number_of_instances += 1
 
     def area(self):
         """Return Rectangle area"""
@@ -25,12 +32,12 @@ class Rectangle():
 
     @property
     def width(self):
-        """Retrieve width of Rectangle"""
+        """Retrieve width of the Rectangle class"""
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Set width of Rectangle"""
+        """Set the width of the Rectangle"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value < 0:
@@ -39,12 +46,12 @@ class Rectangle():
 
     @property
     def height(self):
-        """Retrieve height of Rectangle"""
+        """Retrieve the height of the Rectangle"""
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Set height of Rectangle"""
+        """Set the height of the Rectangle"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
@@ -52,14 +59,14 @@ class Rectangle():
         self.__height = value
 
     def __str__(self):
-        """Print the rectangle with the char #"""
+        """Prints the rectangle with the char #"""
         if self.__height == 0 or self.__width == 0:
             return("")
         else:
             str1 = ""
             for x in range(self.__height):
                 for y in range(self.__width):
-                    str1 += "#"
+                    str1 += str(self.print_symbol)
                 str1 += "\n"
         return(str1[:-1])
 
@@ -69,3 +76,20 @@ class Rectangle():
             return("")
         else:
             return("Rectangle({:d}, {:d})".format(self.__width, self.__height))
+
+    def __del__(self):
+        """Prints when instance is deleted"""
+        # when a rectangle is deleted, decrease the instances count
+        Rectangle.number_of_instances -= 1
+        print("Bye rectangle...")
+
+    def bigger_or_equal(rect_1, rect_2):
+        """Return rectangle with the largest area"""
+        if not isinstance(rect_1, Rectangle):
+            raise TypeError("rect_1 must be an instance of Rectangle")
+        if not isinstance(rect_2, Rectangle):
+            raise TypeError("rect_2 must be an instance of Rectangle")
+        if rect_2.area() > rect_1.area():
+            return rect_2
+        else:
+            return rect_1
