@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-6-square
-Built on 5-square
+101-square
+Built on 6-square
 Creates a class Square
 return area of the square
 """
@@ -69,3 +69,25 @@ class Square:
             for row in range(area):
                 print('#', end="")
             print()
+
+    def __repr__(self):
+        """ Prints to the stdout the square with the character #
+        Can be used as an instance of itself without
+        neccessarily calling the my_print method
+        """
+        area = self.__size
+        string = ""
+        position = self.__position
+        if area == 0:
+            return ""
+        for end in range(position[1]):
+            """in the range of the last value go to a new line"""
+            string += "\n"
+        for i in range(area):
+            """ range of the area """
+            for space in range(position[0]):
+                string += " "
+            for row in range(area):
+                string += '#'
+            string += "\n"
+        return string[:-1]
