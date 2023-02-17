@@ -81,6 +81,7 @@ class Rectangle(Base):
         """ Returns area of the rectangle instance"""
         area = self.width * self.height
         return area
+
     def display(self):
         """ Displays the shape of a rectangle using #"""
         for space in range(self.y):
@@ -89,16 +90,50 @@ class Rectangle(Base):
             print(f'{" " * self.x} {"#" * self.width}')
             
     def __str__(self):
-        """Overides the initial method and returns a new way of printing"""
+        """Overides the initial method and returns a new way of printing
+        Returns:
+            {str} -- The string representation of the rectangle and its attributes
+        """
         return (f'[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}')
-    def update(self, *args):
+    
+    def update(self, *args, **kwargs):
         """Assigns an rgument to each attribute"""
+        
+        actual = [self.id, self.width, self.height, self.x, self.y]
+        if args:
+            new_args = list(args[:len(args)]) + actual[len(args):]
+        if not args:
+            parsed_kwargs = [
+                kwargs.get('id'),
+                kwargs.get('width'),
+                kwargs.get('height'),
+                kwargs.get('x'),
+                kwargs.get('y')
+            ]
+            new_args = [
+                parsed_kwargs[i] if parsed_kwargs[i] is not None else actual[i]
+                for i in range(len(actual))
+            ]
+        if args or kwargs:
+            (self.id, self.width, self.height, self.x, self.y) = new_args
+        """
         try:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
+            if len(args) != 0:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
+            else:
+                for key, value in kwargs.items():
+                    print(f'{key}')
         except Exception as e:
             pass
+        """
 
+    def to_dictionary(self):
+        """Returns the dictionary represenation of Rectangle"""
+        Dict = {
+                'id':self.id, 'width':self.width, 'height':self.height, 'x':self.x, 'y':self.y
+                }
+        return Dict
