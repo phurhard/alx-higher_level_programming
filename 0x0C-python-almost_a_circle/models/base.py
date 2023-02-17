@@ -23,7 +23,7 @@ class Base:
         else:
             return json.dumps(list_dictionaries)
 
-     @classmethod
+    @classmethod
     def save_to_file(cls, list_objs):
         """Saves a list of instance objects in a JSON formatted file.
         Arguments:
