@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 import json
+import turtle
+import csv
+import random
 """
 Base class of a python package
 """
