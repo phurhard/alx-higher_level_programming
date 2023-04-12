@@ -1,0 +1,19 @@
+{
+  "name": "0x12-javascript-warm_up",
+  "version": "1.0.0",
+  "description": "Javascript warm up for ALX",
+  "main": "0-javascript_is_amazing.js",
+  "scripts": {
+    "test": "./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phurhard/alx-higher_level_programming/0x12-javascript-warm-up.git"
+  },
+  "keywords": [
+    "js"
+  ],
+  "author": "phurhard",
+  "license": "ISC",
+  "type": "module"
+}
