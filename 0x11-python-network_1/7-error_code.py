@@ -6,6 +6,6 @@ import requests
 import sys
 try:
     req = requests.get(sys.argv[1])
-        print(req.text)
+    print(req.text)
 except HTTPError as e:
     print(f"Error code: {e.code}")

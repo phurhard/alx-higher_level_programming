@@ -6,5 +6,5 @@ import sys
 import requests as url
 if __name__ == "__main__":
     email = {'email': sys.argv[2]}
-    req = url.post(sys.argv[1], data = {'email': sys.argv[2]})
+    req = url.post(sys.argv[1], data={'email': sys.argv[2]})
     print(req.text)
