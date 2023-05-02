@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 '''This python script returns the value of the
 X-Requer-Id in the header of the request'''
 import urllib.request as url
