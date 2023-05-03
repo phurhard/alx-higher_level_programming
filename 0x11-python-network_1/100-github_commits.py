@@ -12,11 +12,10 @@ import sys
 
 if __name__ == "__main__":
     try:
-        username = sys.argv[1]
-        password = sys.argv[2]
-        header = {"Authorization": "Basic" + password}
-        req = requests.get("https://api.github.com/users/" + username, headers=header)
+        repo-name = sys.argv[1]
+        owner-name = sys.argv[2]
+        req = requests.get("https://developer.github.com/v3/repos/commits/")
         jsonFile = req.json()
-        print(jsonFile['id'])
+        print(jsonFile['commits'][:11])
     except Exception as e:
         print(e)
