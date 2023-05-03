@@ -12,10 +12,13 @@ import sys
 
 if __name__ == "__main__":
     try:
-        repo-name = sys.argv[1]
-        owner-name = sys.argv[2]
-        req = requests.get("https://developer.github.com/v3/repos/commits/")
+        repoName = sys.argv[1]
+        ownerName = sys.argv[2]
+        req = requests.get("https://developer.github.com/v3/repos/{ownerName}/{repoName}/commits?author=rails")
         jsonFile = req.json()
-        print(jsonFile['commits'][:11])
+        for commit in jsonFile[:10]:
+            sha = commit['sha']
+            authorName = commit['comnit']['author']['name']
+            print(f'{sha}: {authorName}')
     except Exception as e:
         print(e)
