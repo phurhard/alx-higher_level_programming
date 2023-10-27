@@ -62,17 +62,16 @@ class Rectangle():
         """Prints the rectangle with the char #"""
         if self.__height == 0 or self.__width == 0:
             return("")
-        else:
-            str1 = ""
-            for x in range(self.__height):
-                for y in range(self.__width):
-                    str1 += str(self.print_symbol)
-                str1 += "\n"
+        str1 = ""
+        for _ in range(self.__height):
+            for _ in range(self.__width):
+                str1 += str(self.print_symbol)
+            str1 += "\n"
         return(str1[:-1])
 
     def __repr__(self):
         """string evaluation of rectangle"""
-        if self.__height == 0 or self.__height == 0:
+        if self.__height == 0:
             return("")
         else:
             return("Rectangle({:d}, {:d})".format(self.__width, self.__height))
@@ -83,13 +82,10 @@ class Rectangle():
         Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
 
-    def bigger_or_equal(rect_1, rect_2):
+    def bigger_or_equal(self, rect_2):
         """Return rectangle with the largest area"""
-        if not isinstance(rect_1, Rectangle):
+        if not isinstance(self, Rectangle):
             raise TypeError("rect_1 must be an instance of Rectangle")
         if not isinstance(rect_2, Rectangle):
             raise TypeError("rect_2 must be an instance of Rectangle")
-        if rect_2.area() > rect_1.area():
-            return rect_2
-        else:
-            return rect_1
+        return rect_2 if rect_2.area() > self.area() else self

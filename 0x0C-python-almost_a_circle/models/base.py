@@ -21,7 +21,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """Returns the JSON representation of list dictionaries"""
-        if list_dictionaries == None or not list_dictionaries:
+        if list_dictionaries is None or not list_dictionaries:
             return "[]"
         else:
             return json.dumps(list_dictionaries)
@@ -34,7 +34,7 @@ class Base:
                                         (with its properties)
                                         that will be processed.
         """
-        with open('{}.json'.format(cls.__name__), 'w') as file:
+        with open(f'{cls.__name__}.json', 'w') as file:
             if not list_objs:
                 file.write(cls.to_json_string([]))
             else:
@@ -53,10 +53,7 @@ class Base:
                                 Base object instances
                                 (with its properties).
         """
-        if not json_string:
-            return []
-        else:
-            return json.loads(json_string)
+        return [] if not json_string else json.loads(json_string)
 
     @classmethod
     def create(cls, **dictionary):
@@ -82,11 +79,10 @@ class Base:
                                 stored in the JSON file.
         """
         try:
-            with open('{}.json'.format(cls.__name__), 'r') as file:
+            with open(f'{cls.__name__}.json', 'r') as file:
                 data = file.read()
                 json_data = cls.from_json_string(data)
-                list_instances = [cls.create(**ins) for ins in json_data]
-                return list_instances
+                return [cls.create(**ins) for ins in json_data]
         except FileNotFoundError:
             return []
 
@@ -137,7 +133,7 @@ class Base:
                                         (with its properties)
                                         that will be processed.
         """
-        with open('{}.csv'.format(cls.__name__), "w") as file:
+        with open(f'{cls.__name__}.csv', "w") as file:
             instances_list = [
                 instance.to_dictionary() for instance in list_objs
             ]
@@ -158,7 +154,7 @@ class Base:
                                 stored in the CSV file.
         """
         try:
-            with open('{}.csv'.format(cls.__name__), 'r') as file:
+            with open(f'{cls.__name__}.csv', 'r') as file:
                 data = csv.DictReader(file)
                 lines = [dict(line) for line in data]
                 props = [{

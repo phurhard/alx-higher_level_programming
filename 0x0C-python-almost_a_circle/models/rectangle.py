@@ -79,14 +79,13 @@ class Rectangle(Base):
 
     def area(self):
         """ Returns area of the rectangle instance"""
-        area = self.width * self.height
-        return area
+        return self.width * self.height
 
     def display(self):
         """ Displays the shape of a rectangle using #"""
-        for space in range(self.y):
+        for _ in range(self.y):
             print("\n", end="")
-        for row in range(self.height):
+        for _ in range(self.height):
             print(f'{" " * self.x} {"#" * self.width}')
             
     def __str__(self):
@@ -101,7 +100,7 @@ class Rectangle(Base):
         
         actual = [self.id, self.width, self.height, self.x, self.y]
         if args:
-            new_args = list(args[:len(args)]) + actual[len(args):]
+            new_args = list(args[:]) + actual[len(args):]
         if not args:
             parsed_kwargs = [
                 kwargs.get('id'),
@@ -133,7 +132,10 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         """Returns the dictionary represenation of Rectangle"""
-        Dict = {
-                'id':self.id, 'width':self.width, 'height':self.height, 'x':self.x, 'y':self.y
-                }
-        return Dict
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y,
+        }

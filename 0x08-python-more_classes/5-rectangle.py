@@ -55,17 +55,16 @@ class Rectangle():
         """Print the rectangle with the char #"""
         if self.__height == 0 or self.__width == 0:
             return("")
-        else:
-            str1 = ""
-            for x in range(self.__height):
-                for y in range(self.__width):
-                    str1 += "#"
-                str1 += "\n"
+        str1 = ""
+        for _ in range(self.__height):
+            for _ in range(self.__width):
+                str1 += "#"
+            str1 += "\n"
         return(str1[:-1])
 
     def __repr__(self):
         """Get string evaluation of rectangle"""
-        if self.__height == 0 or self.__height == 0:
+        if self.__height == 0:
             return("")
         else:
             return("Rectangle({:d}, {:d})".format(self.__width, self.__height))

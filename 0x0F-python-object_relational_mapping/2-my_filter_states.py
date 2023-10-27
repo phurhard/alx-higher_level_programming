@@ -14,12 +14,15 @@ Write a script that takes in an argument and displays all values in the states t
 ~$ ./2-my_filter_states root root hbtn_0e_0_usa 'Arizona'
 (2, 'Arizona')
 """
+
 if __name__ == "__main__":
     import MySQLdb
     import sys
     conn = MySQLdb.connect(host="localhost", port=3306, user=sys.argv[1], passwd=sys.argv[2], db=sys.argv[3], charset="utf8")
     cur = conn.cursor()
-    cur.execute("SELECT id,name FROM states WHERE name = '{}' ORDER BY id ASC".format(sys.argv[4]))
+    cur.execute(
+        f"SELECT id,name FROM states WHERE name = '{sys.argv[4]}' ORDER BY id ASC"
+    )
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)

@@ -62,10 +62,10 @@ class Square:
         for end in range(position[1]):
             """in the range of the last value go to a new line"""
             print()
-        for i in range(area):
+        for _ in range(area):
             """ range of the area """
-            for space in range(position[0]):
+            for _ in range(position[0]):
                 print(" ", end="")
-            for row in range(area):
+            for _ in range(area):
                 print('#', end="")
             print()

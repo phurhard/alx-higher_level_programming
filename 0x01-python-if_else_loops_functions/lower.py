@@ -2,8 +2,8 @@
 def lower(c):
     char = ord(c)
     if char >= 97 and char <= 123:
-        print("{} is {}".format(c, ord(c)))
+        print(f"{c} is {ord(c)}")
     else:
-        print("Character{} is upper {}".format(c, ord(c)))
+        print(f"Character{c} is upper {ord(c)}")
 lower("a")
 lower("A")

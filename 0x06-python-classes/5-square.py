@@ -36,7 +36,7 @@ class Square:
         area = self.__size
         if area == 0:
             print()
-        for i in range(area):
-            for j in range(area):
+        for _ in range(area):
+            for _ in range(area):
                 print('#', end="")
             print()

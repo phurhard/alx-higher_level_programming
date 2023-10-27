@@ -7,6 +7,7 @@
  * The first argument will be your username
  * The second argument will be your password (in your case, a personal access token as password)
  * You must use the package requests and sys'''
+
 import requests
 import sys
 
@@ -14,8 +15,8 @@ if __name__ == "__main__":
     try:
         username = sys.argv[1]
         password = sys.argv[2]
-        header = {"Authorization": "Basic" + password}
-        req = requests.get("https://api.github.com/users/" + username, headers=header)
+        header = {"Authorization": f"Basic{password}"}
+        req = requests.get(f"https://api.github.com/users/{username}", headers=header)
         jsonFile = req.json()
         print(jsonFile['id'])
     except Exception as e:

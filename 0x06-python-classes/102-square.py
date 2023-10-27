@@ -43,14 +43,14 @@ class Square:
         position = self.__position
         if area == 0:
             return ""
-        for end in range(position[1]):
+        for _ in range(position[1]):
             """in the range of the last value go to a new line"""
             string += "\n"
-        for i in range(area):
+        for _ in range(area):
             """ range of the area """
-            for space in range(position[0]):
+            for _ in range(position[0]):
                 string += " "
-            for row in range(area):
+            for _ in range(area):
                 string += '#'
             string += "\n"
         return string[:-1]

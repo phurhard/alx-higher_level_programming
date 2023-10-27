@@ -55,8 +55,7 @@ class Rectangle:
 
     def area(self):
         """Calculates the Area of the Rectangle"""
-        Area = self.__width * self.__height
-        return Area
+        return self.__width * self.__height
 
     def perimeter(self):
         """ Calculates the perimeter of the rectangle"""
@@ -64,8 +63,7 @@ class Rectangle:
             return 0
         length = 2 * self.__height
         breadth = 2 * self.__width
-        perim = length + breadth
-        return perim
+        return length + breadth
 
     def __str__(self):
         """ Prints to the stdout the square with the character #
@@ -77,10 +75,10 @@ class Rectangle:
         height = self.__height
         if width == 0 or height == 0:
             return ""
-        for row in range(height):
+        for _ in range(height):
             """ range of the area """
-            for coloum in range(width):
+            for _ in range(width):
                 string += '#'
-            string += "\n" 
+            string += "\n"
         return string[:-1]
 

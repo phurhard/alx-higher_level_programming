@@ -29,16 +29,16 @@ def matrix_mul(m_a, m_b):
     for row in m_b:
         if not all(isinstance(num, (int, float)) for num in row):
             raise TypeError('m_b should contain only integers or floats')
-    len_rows = list(map(lambda x: len(x), [x for x in m_a]))
+    len_rows = list(map(lambda x: len(x), list(m_a)))
     if len_rows.count(len_rows[0]) != len(len_rows):
         raise TypeError('each row of m_a must should be of the same size')
-    len_rows = list(map(lambda x: len(x), [x for x in m_b]))
+    len_rows = list(map(lambda x: len(x), list(m_b)))
     if len_rows.count(len_rows[0]) != len(len_rows):
         raise TypeError('each row of m_b must should be of the same size')
     if len(m_a[0]) != len(m_b):
         raise ValueError("m_a and m_b can't be multiplied")
 
-    result = [[sum(a * b for a, b in zip(A_row, B_col))
-               for B_col in zip(*m_b)]
-              for A_row in m_a]
-    return result
+    return [
+        [sum(a * b for a, b in zip(A_row, B_col)) for B_col in zip(*m_b)]
+        for A_row in m_a
+    ]

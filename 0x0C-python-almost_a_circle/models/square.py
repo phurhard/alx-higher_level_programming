@@ -49,7 +49,7 @@ class Square(Rectangle):
         """
         actual = [self.id, self.size, self.x, self.y]
         if args:
-            new_args = list(args[:len(args)]) + actual[len(args):]
+            new_args = list(args[:]) + actual[len(args):]
         if not args:
             parsed_kwargs = [
                 kwargs.get('id'),
@@ -66,8 +66,5 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """Returns the dictionary represenation of Rectangle"""
-        Dict = {
-                'id':self.id, 'size':self.width, 'x':self.x, 'y':self.y
-                }
-        return Dict
+        return {'id': self.id, 'size': self.width, 'x': self.x, 'y': self.y}
 

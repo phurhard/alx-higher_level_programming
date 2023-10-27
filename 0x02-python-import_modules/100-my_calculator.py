@@ -4,19 +4,19 @@ if __name__ == "__main__":
     import sys
     length = len(sys.argv)
     if length < 4:
-        print("Usage: {} <a> <operator> <b>".format(sys.argv[0]))
+        print(f"Usage: {sys.argv[0]} <a> <operator> <b>")
         sys.exit(1)
     if length == 4:
         a = int(sys.argv[1])
         b = int(sys.argv[3])
         if sys.argv[2] == '+':
-            print("{} {} {} = {}".format(a, sys.argv[2], b, cal.add(a, b)))
+            print(f"{a} {sys.argv[2]} {b} = {cal.add(a, b)}")
         elif sys.argv[2] == '-':
-            print("{} {} {} = {}".format(a, sys.argv[2], b, cal.sub(a, b)))
+            print(f"{a} {sys.argv[2]} {b} = {cal.sub(a, b)}")
         elif sys.argv[2] == '*':
-            print("{} {} {} = {}".format(a, sys.argv[2], b, cal.mul(a, b)))
+            print(f"{a} {sys.argv[2]} {b} = {cal.mul(a, b)}")
         elif sys.argv[2] == '/':
-            print("{} {} {} = {}".format(a, sys.argv[2], b, cal.div(a, b)))
+            print(f"{a} {sys.argv[2]} {b} = {cal.div(a, b)}")
         else:
             print("Unknown operator. Available operators: +, -, * and /")
             exit(1)
